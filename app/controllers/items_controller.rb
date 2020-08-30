@@ -15,6 +15,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def calculated
+    price = params[:num].to_i
+    num_fee = price / 10
+    num_profit = price - num_fee
+    calculation = { fee: num_fee, profit: num_profit }
+    render json: { post: calculation }
+  end
+
   private
 
   def item_params
