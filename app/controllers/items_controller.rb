@@ -16,6 +16,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find(params[:id])
+    @user = @item.user
+    @order = @item.order
+  end
+
   def calculated
     price = params[:num].to_i
     num_fee = price / 10
