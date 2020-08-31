@@ -10,4 +10,6 @@ class User < ApplicationRecord
   validates :last_name_k, format: { with: /\A[ァ-ン]+\z/ }
   validates :first_name_k, format: { with: /\A[ァ-ン]+\z/ }
   validates :nickname, :last_name, :first_name, :last_name_k, :first_name_k, :birth_date, presence: true
+
+  has_many :items
 end
