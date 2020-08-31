@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.includes(:order).order('created_at DESC')
-    
   end
 
   def new
