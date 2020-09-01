@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: :show
+  before_action :set_item, only: [:show, :edit]
 
   def index
     @items = Item.includes(:order).order('created_at DESC')
@@ -22,6 +22,9 @@ class ItemsController < ApplicationController
   def show
     @user = @item.user
     @order = @item.order
+  end
+
+  def edit
   end
 
   def calculated
