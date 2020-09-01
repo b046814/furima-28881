@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+  before_action :set_item, only: :show
+
   def index
     @items = Item.includes(:order).order('created_at DESC')
   end
@@ -16,6 +19,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @user = @item.user
+    @order = @item.order
+  end
+
   def calculated
     price = params[:num].to_i
     num_fee = price / 10
@@ -29,4 +37,9 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :description, :category_id, :condition_id, :ship_expense_id, :prefecture_id, :period_id, :price).merge(user_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end
