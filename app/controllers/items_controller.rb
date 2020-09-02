@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update]
-  before_action :move_to_root, only: :edit
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_root, only: [:edit, :destroy]
 
   def index
     @items = Item.includes(:order).order('created_at DESC')
@@ -33,8 +33,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   def calculated
