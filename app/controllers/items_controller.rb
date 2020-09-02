@@ -32,6 +32,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+  end
+
   def calculated
     price = params[:num].to_i
     num_fee = price / 10
