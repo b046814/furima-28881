@@ -49,9 +49,9 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :place
+- has_one :address
 
-## places テーブル
+## addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -59,9 +59,9 @@
 | prefecture_id | integer    | null: false                    |
 | city_name     | string     | null: false                    |
 | block_number  | string     | null: false                    |
-| building      | string     |                                |
+| building      | string     | default: ""                    |
 | phone_number  | integer    | null: false                    |
-| order      | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
