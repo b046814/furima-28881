@@ -21,4 +21,4 @@ function calculate() {
     })
 }
 
-window.addEventListener("turbolinks:load", calculate);
+window.addEventListener("load", calculate);
