@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :set_item, only: [:index, :create]
   before_action :move_to_root, only: :index
 
   def index
@@ -6,7 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(token: order_params[:token], item_id: order_params[:item_id], price: order_params[:price], \
                                       user_id: order_params[:user_id], postal_code: order_params[:order_address][:postal_code], \
                                       prefecture_id: order_params[:order_address][:prefecture_id], \
@@ -39,8 +39,11 @@ class OrdersController < ApplicationController
                                                             :building, :phone_number]).merge(user_id: current_user.id)
   end
 
-  def move_to_root
+  def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def move_to_root
     return if user_signed_in? && @item.order.nil? && current_user.id != @item.user_id
 
     redirect_to root_path
