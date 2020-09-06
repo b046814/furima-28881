@@ -7,13 +7,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order_address = OrderAddress.new(token: order_params[:token], item_id: order_params[:item_id], price: order_params[:price], \
-                                      user_id: order_params[:user_id], postal_code: order_params[:order_address][:postal_code], \
-                                      prefecture_id: order_params[:order_address][:prefecture_id], \
-                                      city_name: order_params[:order_address][:city_name], \
-                                      block_number: order_params[:order_address][:block_number], \
-                                      building: order_params[:order_address][:building], \
-                                      phone_number: order_params[:order_address][:phone_number])
+    @order_address = OrderAddress.new(order_params[:order_address])
+    @order_address.item_id = order_params[:item_id]
+    @order_address.user_id = order_params[:user_id]
+    @order_address.token = order_params[:token]
+    binding.pry
     if @order_address.valid?
       pay_item
       @order_address.save
