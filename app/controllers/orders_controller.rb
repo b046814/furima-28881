@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
     @order_address.item_id = order_params[:item_id]
     @order_address.user_id = order_params[:user_id]
     @order_address.token = order_params[:token]
-    binding.pry
     if @order_address.valid?
       pay_item
       @order_address.save
