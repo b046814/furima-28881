@@ -60,7 +60,7 @@
 | city_name     | string     | null: false                    |
 | block_number  | string     | null: false                    |
 | building      | string     | default: ""                    |
-| phone_number  | integer    | null: false                    |
+| phone_number  | string    | null: false                    |
 | order         | references | null: false, foreign_key: true |
 
 ### Association
