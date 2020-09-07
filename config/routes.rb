@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     collection do
       get 'calculated'
     end
+    resources :orders, only: [:index, :create]
   end
 end
