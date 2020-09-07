@@ -3,8 +3,8 @@ class OrderAddress
   attr_accessor :order_address, :user_id, :item_id, :token, :price, \
                 :postal_code, :prefecture_id, :city_name, :block_number, :building, :phone_number
 
-  POSTAL_CODE_REGEX = /\A[0-9]{3}-[0-9]{4}\z/
-  PHONE_NUMBER_REGEX = /\A[0-9]{1,11}\z/
+  POSTAL_CODE_REGEX = /\A[0-9]{3}-[0-9]{4}\z/.freeze
+  PHONE_NUMBER_REGEX = /\A[0-9]{1,11}\z/.freeze
   validates :token, :postal_code, :prefecture_id, :city_name, :block_number, :phone_number, presence: true
   validates :postal_code, format: { with: POSTAL_CODE_REGEX }
   validates :phone_number, format: { with: PHONE_NUMBER_REGEX }
