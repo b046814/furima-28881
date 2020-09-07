@@ -30,10 +30,8 @@
     <p class='or-text'>or</p>
     <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
     <% elsif @order != nil %>
-    <% elsif user_signed_in? && @order == nil %>
-    <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn"%>
     <% else %>
-    <%= link_to '購入画面に進む', new_user_session_path ,class:"item-red-btn"%>
+    <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn"%>
     <% end %>
 
     <div class="item-explain-box">
